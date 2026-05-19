@@ -1,40 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+<div align="center">
+  <h1 style="color: #8B5CF6;">☂️ education-management</h1>
+  <p style="color: #A78BFA; font-size: 1.2rem;">Դպրոցի/Կրթական Հաստատության Կառավարման Համակարգ</p>
+  <div>
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-8B5CF6?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/docs)
+[![React](https://img.shields.io/badge/React-8B5CF6?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-8B5CF6?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-8B5CF6?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/docs)
+[![Sequelize](https://img.shields.io/badge/Sequelize-8B5CF6?style=for-the-badge&logo=sequelize&logoColor=white)](https://sequelize.org)
 
-First, run the development server:
+  </div>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ☂️ Նախագծի Մասին
+
+Այս նախագիծը դինամիկ **Դպրոցի/Կրթական Հաստատության Կառավարման Համակարգ** է: Այն հնարավորություն է ընձեռում կենտրոնացված և արդյունավետ կերպով կառավարել ուսանողների, ուսուցիչների, դասարանների, առարկաների և գնահատականների տվյալները:
+
+## ☂️ Հիմնական Հնարավորություններ
+
+-  **Օգտատերերի և Տվյալների Կառավարում:** Ուսանողների, Ուսուցիչների, Դասարանների, Առարկաների և Գնահատականների ամբողջական կառավարում:
+-  **Վիճակագրություն (Dashboard):** Տեսողական գրաֆիկներ և վիճակագրական տվյալներ Recharts-ի միջոցով:
+-  **Ծանուցումների Համակարգ:** Ծանուցումների ստեղծում և իրական ժամանակում դիտում:
+-  **Բազմալեզու Աջակցություն:** Համակարգը աշխատում է հայերեն և անգլերեն լեզուներով:
+
+## ☂️ Տեխնոլոգիական Ստեկ
+
+**Frontend:**
+- `next`
+- `react` / `react-dom`
+- `tailwindcss` / `@tailwindcss/postcss` - ոճերի համար
+- `framer-motion` - անիմացիաների համար
+- `lucide-react` - նկարների համար
+- `recharts` - գրաֆիկների համար
+- `i18next` / `react-i18next` - բազմալեզու աջակցություն
+
+**Backend & Database:**
+- `next` API Routes
+- `pg` / `pg-hstore` (PostgreSQL) - PostgreSQL տվյալների բազա
+- `sequelize` / `sequelize-cli` - Sequelize ORM
+- `jsonwebtoken` - JWT թոքեններ
+- `bcryptjs` - գաղտնաբառերի գաղտնագրում
+- `dotenv` - շրջակա միջավայրի փոփոխականներ
+
+## ☂️ Պրոյեկտի Կառուցվածք
+
+```text
+education-management/
+├── src/
+│   ├── components/    # UI կոմպոնենտներ
+│   ├── config/        # Կարգավորումներ և բազայի միացում
+│   ├── context/       # React Context (AuthContext)
+│   ├── lib/           # Օգնող ֆունկցիաներ
+│   ├── locales/       # i18next թարգմանությունների ֆայլեր
+│   ├── migrations/    # Տվյալների բազայի միգրացիաներ
+│   ├── models/        # Sequelize մոդելներ
+│   ├── pages/         # Next.js էջեր և API Routes (Backend)
+│   ├── seeders/       # Նախնական տվյալների լցնում
+│   └── styles/        # Գլոբալ ոճեր (Tailwind CSS)
+├── .env.local         # Շրջակա միջավայրի փոփոխականներ
+├── package.json       # Կախվածություններ և հրամաններ
+└── README.md          # Նախագծի փաստաթղթավորում
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ☂️ Տեղադրում և Գործարկում
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**1. Պատճենեք ռեպոզիտորիան (Clone repository)**
+```bash
+git clone https://github.com/Vahram-Ghazaryan/education-management.git
+cd education-management
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+**2. Տեղադրեք կախվածությունները (Install dependencies)**
+```bash
+npm install
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+**3. Կարգավորեք շրջակա միջավայրի փոփոխականները**
+Ստեղծեք `.env.local` ֆայլ արմատային պանակում և ավելացրեք հետևյալ տվյալները.
+```env
+DB_NAME=Ձեր Տվյալների Բազայի Անունը
+DB_USER=Ձեր Օգտանունը
+DB_PASSWORD=Ձեր Գաղտնաբառը
+DB_HOST=Ձեր Տվյալների Բազայի Host-ը
+DB_PORT=Ձեր Տվյալների Բազայի Port-ը
+JWT_SECRET=Ձեր JWT Secret-ը
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**4. Գործարկեք տվյալների բազայի միգրացիաները և seeder-ները**
+```bash
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+```
 
-## Learn More
+**5. Գործարկեք նախագիծը**
+Ըստ `package.json`-ում առկա հրամանների՝
+- Մշակման միջավայրի համար (development)՝
+```bash
+npm run dev
+```
+- Արտադրական միջավայրի համար (production build and start)՝
+```bash
+npm run build
+npm run start
+```
+- Կոդի ստուգման համար (lint)՝
+```bash
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+Նախագիծը հասանելի կլինի `http://localhost:3000` հասցեով:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## ☂️ Անվտանգություն և Գաղտնիություն
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Authentication:** Օգտատերերի մուտքը համակարգ վավերացվում է `jsonwebtoken` գրադարանի միջոցով: Հաջող մուտքի դեպքում ստեղծվում է JWT token, որն ապահովում է նույնականացումը:
+- **Authorization:** Backend-ի API route-ները պաշտպանված են հատուկ middleware ֆունկցիաներով, որոնք ստուգում են ուղարկված token-ի վավերականությունը՝ թույլ չտալով չարտոնված մուտք:
+- **Password Hashing:** Գաղտնաբառերը պահպանվում են PostgreSQL տվյալների բազայում գաղտնագրված (hashed) տարբերակով՝ օգտագործելով անվտանգ `bcryptjs` գրադարանը:
 
-## Deploy on Vercel
+## ☂️ Պահանջներ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- **Node.js**
+- **PostgreSQL** (կարգավորված փոփոխականներին համապատասխան)
+- **npm** փաթեթների կառավարիչ
