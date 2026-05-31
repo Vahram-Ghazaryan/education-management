@@ -28,7 +28,7 @@ export const Subject = sequelize.define(
     description: { type: DataTypes.TEXT },
     backgroundImage: { type: DataTypes.STRING(500) },
   },
-  { tableName: 'subjects' }
+  { tableName: 'subjects', schema: 'education_management' }
 );
 
 export const Teacher = sequelize.define(
@@ -42,7 +42,7 @@ export const Teacher = sequelize.define(
     gender: { type: DataTypes.ENUM('male', 'female', 'other'), allowNull: false },
     subjectId: { type: DataTypes.INTEGER },
   },
-  { tableName: 'teachers' }
+  { tableName: 'teachers', schema: 'education_management' }
 );
 
 export const Class = sequelize.define(
@@ -54,7 +54,7 @@ export const Class = sequelize.define(
     section: { type: DataTypes.STRING(10) },
     teacherId: { type: DataTypes.INTEGER },
   },
-  { tableName: 'classes' }
+  { tableName: 'classes', schema: 'education_management' }
 );
 
 export const Student = sequelize.define(
@@ -69,7 +69,7 @@ export const Student = sequelize.define(
     gender: { type: DataTypes.ENUM('male', 'female', 'other'), allowNull: false },
     classId: { type: DataTypes.INTEGER },
   },
-  { tableName: 'students' }
+  { tableName: 'students', schema: 'education_management' }
 );
 
 export const Grade = sequelize.define(
@@ -83,7 +83,7 @@ export const Grade = sequelize.define(
     date: { type: DataTypes.DATEONLY, allowNull: false },
     notes: { type: DataTypes.TEXT },
   },
-  { tableName: 'grades' }
+  { tableName: 'grades', schema: 'education_management' }
 );
 
 export const User = sequelize.define(
@@ -96,7 +96,7 @@ export const User = sequelize.define(
     password: { type: DataTypes.STRING(255), allowNull: false },
     role: { type: DataTypes.STRING(20), defaultValue: 'admin' },
   },
-  { tableName: 'users' }
+  { tableName: 'users', schema: 'education_management' }
 );
 
 export const Notification = sequelize.define(
@@ -109,7 +109,7 @@ export const Notification = sequelize.define(
     type: { type: DataTypes.ENUM('info', 'success', 'warning', 'error'), defaultValue: 'info' },
     isRead: { type: DataTypes.BOOLEAN, defaultValue: false },
   },
-  { tableName: 'notifications' }
+  { tableName: 'notifications', schema: 'education_management' }
 );
 
 

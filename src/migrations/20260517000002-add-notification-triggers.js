@@ -12,13 +12,13 @@ module.exports = {
       BEGIN
           -- Get student name
           SELECT "firstName" || ' ' || "lastName" INTO student_name
-          FROM students WHERE id = NEW."studentId";
+          FROM education_management.students WHERE id = NEW."studentId";
           
           -- Get subject name
           SELECT name INTO subject_name
-          FROM subjects WHERE id = NEW."subjectId";
+          FROM education_management.subjects WHERE id = NEW."subjectId";
 
-          INSERT INTO notifications ("userId", title, message, type, "isRead", "createdAt", "updatedAt")
+          INSERT INTO education_management.notifications ("userId", title, message, type, "isRead", "createdAt", "updatedAt")
           VALUES (
               NULL, -- NULL means global notification or we could target a specific user if needed
               '{"key": "notifications.newGrade.title"}',
@@ -41,16 +41,16 @@ module.exports = {
     `);
 
     await queryInterface.sequelize.query(`
-      DROP TRIGGER IF EXISTS trigger_notify_new_grade ON grades;
+      DROP TRIGGER IF EXISTS trigger_notify_new_grade ON education_management.grades;
       CREATE TRIGGER trigger_notify_new_grade
-      AFTER INSERT ON grades
+      AFTER INSERT ON education_management.grades
       FOR EACH ROW
       EXECUTE FUNCTION notify_new_grade();
     `);
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.sequelize.query(`DROP TRIGGER IF EXISTS trigger_notify_new_grade ON grades;`);
+    await queryInterface.sequelize.query(`DROP TRIGGER IF EXISTS trigger_notify_new_grade ON education_management.grades;`);
     await queryInterface.sequelize.query(`DROP FUNCTION IF EXISTS notify_new_grade;`);
   },
 };

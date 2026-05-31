@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      'notifications',
+      { tableName: 'notifications', schema: 'education_management' },
       [
         {
           title: '{"key": "notifications.demo.systemUpdate.title"}',
@@ -27,6 +27,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('notifications', null, {});
+    await queryInterface.bulkDelete({ tableName: 'notifications', schema: 'education_management' }, null, {});
   },
 };

@@ -2,9 +2,9 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const tableInfo = await queryInterface.describeTable('teachers');
+    const tableInfo = await queryInterface.describeTable({ tableName: 'teachers', schema: 'education_management' });
     if (!tableInfo.gender) {
-      await queryInterface.addColumn('teachers', 'gender', {
+      await queryInterface.addColumn({ tableName: 'teachers', schema: 'education_management' }, 'gender', {
         type: Sequelize.ENUM('male', 'female', 'other'),
         allowNull: true,
       });
@@ -12,9 +12,9 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    const tableInfo = await queryInterface.describeTable('teachers');
+    const tableInfo = await queryInterface.describeTable({ tableName: 'teachers', schema: 'education_management' });
     if (tableInfo.gender) {
-      await queryInterface.removeColumn('teachers', 'gender');
+      await queryInterface.removeColumn({ tableName: 'teachers', schema: 'education_management' }, 'gender');
     }
   }
 };

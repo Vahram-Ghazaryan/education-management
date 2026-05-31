@@ -78,10 +78,10 @@ module.exports = {
       },
     ];
 
-    await queryInterface.bulkInsert('subjects', subjectsData);
+    await queryInterface.bulkInsert({ tableName: 'subjects', schema: 'education_management' }, subjectsData);
 
     const subjects = await queryInterface.sequelize.query(
-      `SELECT id, name FROM subjects ORDER BY id`,
+      `SELECT id, name FROM education_management.subjects ORDER BY id`,
       {
         type: Sequelize.QueryTypes.SELECT,
       }
@@ -93,7 +93,7 @@ module.exports = {
     });
 
 
-    await queryInterface.bulkInsert('teachers', [
+    await queryInterface.bulkInsert({ tableName: 'teachers', schema: 'education_management' }, [
       {
         firstName: 'Անի',
         lastName: 'Հովհաննիսյան',
@@ -237,7 +237,7 @@ module.exports = {
     ]);
 
     const teachers = await queryInterface.sequelize.query(
-      `SELECT id, email FROM teachers ORDER BY id`,
+      `SELECT id, email FROM education_management.teachers ORDER BY id`,
       {
         type: Sequelize.QueryTypes.SELECT,
       }
@@ -246,7 +246,7 @@ module.exports = {
     const T = Object.fromEntries(teachers.map((t) => [t.email, t.id]));
 
 
-    await queryInterface.bulkInsert('classes', [
+    await queryInterface.bulkInsert({ tableName: 'classes', schema: 'education_management' }, [
       {
         name: '9Ա',
         grade: 9,
@@ -314,7 +314,7 @@ module.exports = {
     ]);
 
     const classes = await queryInterface.sequelize.query(
-      `SELECT id, name FROM classes ORDER BY id`,
+      `SELECT id, name FROM education_management.classes ORDER BY id`,
       {
         type: Sequelize.QueryTypes.SELECT,
       }
@@ -323,7 +323,7 @@ module.exports = {
     const C = Object.fromEntries(classes.map((c) => [c.name, c.id]));
 
 
-    await queryInterface.bulkInsert('students', [
+    await queryInterface.bulkInsert({ tableName: 'students', schema: 'education_management' }, [
       {
         firstName: 'Արման',
         lastName: 'Հարությունյան',
@@ -591,7 +591,7 @@ module.exports = {
     ]);
 
     const students = await queryInterface.sequelize.query(
-      `SELECT id, email FROM students ORDER BY id`,
+      `SELECT id, email FROM education_management.students ORDER BY id`,
       {
         type: Sequelize.QueryTypes.SELECT,
       }
@@ -643,31 +643,31 @@ module.exports = {
       });
     }
 
-    await queryInterface.bulkInsert('grades', gradesData);
+    await queryInterface.bulkInsert({ tableName: 'grades', schema: 'education_management' }, gradesData);
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('grades', null, {
+    await queryInterface.bulkDelete({ tableName: 'grades', schema: 'education_management' }, null, {
       truncate: true,
       cascade: true,
     });
 
-    await queryInterface.bulkDelete('students', null, {
+    await queryInterface.bulkDelete({ tableName: 'students', schema: 'education_management' }, null, {
       truncate: true,
       cascade: true,
     });
 
-    await queryInterface.bulkDelete('classes', null, {
+    await queryInterface.bulkDelete({ tableName: 'classes', schema: 'education_management' }, null, {
       truncate: true,
       cascade: true,
     });
 
-    await queryInterface.bulkDelete('teachers', null, {
+    await queryInterface.bulkDelete({ tableName: 'teachers', schema: 'education_management' }, null, {
       truncate: true,
       cascade: true,
     });
 
-    await queryInterface.bulkDelete('subjects', null, {
+    await queryInterface.bulkDelete({ tableName: 'subjects', schema: 'education_management' }, null, {
       truncate: true,
       cascade: true,
     });
